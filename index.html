@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-4 Js</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./index.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1  >Day-4</h1>
+    </header>
+    
+
+    <div class="container">
+        <h2 class="Question">Q.1	What are function constructors?</h2>
+        
+
+        <p class="Explain">A function constructor is a way to create object using function as a blueprint or template</p>
+        <p class="Explain">It provides us flexiblity to create multiple new object with the same properties and method .</p>
+        
+        <pre class="code">function Person(name, age, course){
+            this.Name = name;
+            this.Age = age;
+            this.Course = course;
+        }
+        
+        
+        let Person1 = new Person("EA23", 23, "MERN");
+        let Person2 = new Person("EA24", 23, "MERN");
+        console.log(Person1);
+        console.log(Person2);</pre>
+
+        
+    </div>
+
+    <div class="container">
+        <h2 class="Question">Q.2	Explain call(), apply() and, bind() methods. Give an example of call(), apply(), bind()?</h2>
+        
+        <p class="Explain"><span> Call :</span> The call method is used to invoked a function with a specific 'this' value, and arguments provide individuly. The call() method invokes a function in which first argument will be the object and rest of the arguments required by function will be provided as an individual arguments.
+        </p>
+        <p class="Explain"><span> Apply :</span> Apply is similar with call, but take argument as an array.The apply() method invokes a function in which first argument will be the object and rest of the arguments will be passed as an array of elements.
+            </p>
+        <p class="Explain"><span> Bind :</span> The bind() method returns a new function and this function will be having the reference of the object passed, now whenever you want to use this returned function in the code you can use it by passing rest of the arguments.
+            </p>
+        
+    
+</div>
+
+<div class="container">
+    <h2 class="Question">Q.3	What is the purpose of async/await keywords?</h2>
+    <p class="Explain">An async function is a function declared with the async keyword, and the await keyword is permitted within it. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need promise chains.
+        </p>
+       <pre class="code">function print(number , timeout){
+        return new Promise((res,rej)=>{
+            setTimeout(() => {
+                console.log(number);
+                res('done')
+            }, timeout);
+        })
+    }
+    
+    async function display(){
+      try{
+        await print(1,1000)
+       await print(2,2000)
+       await print(3,2000)
+       await print(4,4000)
+       await print(5,3000)
+      }
+      catch(err){
+        console.log(err);
+      }
+        
+    }
+    
+    display();</pre> 
+        
+    </div>
+
+    <div class="container">
+        <h2 class="Question">Q.4	Explain prototypes?</h2>
+            
+            <p class="Explain">The prototype is an object that is associated with every JavaScript object. It serves as a blueprint or template for creating new objects through inheritance. The prototype object contains properties and methods that are shared among all instances created from it. </p>
+            <pre class="code"> function Person(first, last, age, eyecolor) {
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.eyeColor = eyecolor;
+              }
+              Person.prototype.nationality = "English";
+              
+              var person1 = new Person ('John', 'jane', 24, 'blue');
+              // Access Prototype Method
+              console.log(person1.nationality);
+            </pre>
+    </div>
+
+    <div class="container">
+        <h2 class="Question">Q.5	What is prototype chain ?
+
+        </h2>
+        <p class="Explain">The prototype chain is a mechanism that allows objects to inherit properties and methods from other objects. Every object can have exactly one prototype object. That prototype object can also have a prototype object, and so on, creating a chain of inheritied properties and methods.</p>
+            <pre class="code">function Animal(name){
+                this.Name = name
+            }
+            
+            Animal.prototype.sayHello = function(){
+                console.log(` Hello There ${this.Name}`);
+            }
+            
+            function Dog(name){
+                Animal.call(this , name)
+            }
+            Dog.prototype = Object.create(Animal.prototype)
+            
+            Dog.prototype.bark = function(){
+                console.log("Bark...!!!");
+            }
+            // Instance
+            
+            let animal1 = new Animal('Cat')
+            animal1.sayHello()
+            
+            let dog1 = new Dog("Becky")
+            console.log(dog1.Name);
+            dog1.sayHello()
+            dog1.bark()</pre>
+     
+            </div>
+        <div class="container">
+            <h2 class="Question">Q.6	Give an example of inheritance using function constructor?</h2>
+                
+            <pre class="code">function Person() {
+                    this.name = 'John'
+                }
+                
+                Person.prototype.age = 20;
+                
+                const person1 = new Person();
+                
+                console.log(person1.age);
+            </pre>
+            <p class="Explain"> In this example as we can see the new instance person1 of the function Constructor Person has inherited the methods and values of Person.</p>
+        </div>
+
+       
+
+   
+   
+    
+   
+
+
+</body>
+</html>
